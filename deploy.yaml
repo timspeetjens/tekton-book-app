@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: tekton-pod
-        image: <YOUR_USERNAME>/tekton-lab-app
+        image: quay.io/tim_speetjens/tekton-lab-app
         ports:
         - containerPort: 3000
 ---
@@ -34,7 +34,8 @@ metadata:
   name: tekton-ingress
 spec:
   rules:
-  - http:
+  - host: tekton-book-app.apps.ocplab.speetjens.be
+    http:
       paths:
       - pathType: Prefix
         path: "/"
@@ -43,4 +44,3 @@ spec:
             name: tekton-svc
             port: 
               number: 3000
-
